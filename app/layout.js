@@ -3,7 +3,7 @@ import "./globals.css";
 export const metadata = {
   title: "Priyanka Maskar — Product",
   description:
-    "Product leader building the retrieval and agentic-intelligence layer for PayPal World.",
+    "AI-native product manager shipping agentic systems into production payments infrastructure.",
 };
 
 export default function RootLayout({ children }) {
