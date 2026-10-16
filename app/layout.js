@@ -27,7 +27,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <div className="grain" aria-hidden="true"></div>
+        {children}
+      </body>
     </html>
   );
 }

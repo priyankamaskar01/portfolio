@@ -55,6 +55,7 @@ export default async function CaseStudyPage({ params }) {
             ))}
             {c.sections.invite && (
               <div className="invite-callout">
+                <p className="invite-label">Worth a conversation</p>
                 <p>{c.sections.invite}</p>
               </div>
             )}

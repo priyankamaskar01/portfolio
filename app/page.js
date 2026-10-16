@@ -34,14 +34,21 @@ const PRINCIPLES = [
   },
 ];
 
+const AGENTS = ["Transactions", "Disputes", "Analytics", "SRE", "Participants", "Jira", "Docs / RAG", "Cases"];
+
 export default function Home() {
+  const [featured, ...rest] = CASE_STUDIES;
+
   return (
     <>
       <Nav />
       <main>
         <section className="hero-section">
           <div className="mx-auto max-w-3xl px-6">
-            <p className="eyebrow">Priyanka Maskar</p>
+            <div className="eyebrow-row">
+              <span className="status-dot" aria-hidden="true"></span>
+              <p className="eyebrow">Priyanka Maskar · Lead Product Manager, PayPal World</p>
+            </div>
             <h1 className="hero-headline mt-4 text-4xl sm:text-5xl">
               Shipping agentic AI into <span className="accent">production payments infrastructure.</span>
             </h1>
@@ -75,10 +82,37 @@ export default function Home() {
 
         <div className="mx-auto max-w-3xl px-6">
           <Reveal className="py-20" id="work">
-            <p className="section-label">Selected work</p>
-            <h2 className="section-heading">Four projects, four different skills</h2>
+            <p className="section-label">
+              <span className="mark" aria-hidden="true">✳</span>Selected work
+            </p>
+            <h2 className="section-heading">Products shipped. Systems trusted.</h2>
+
+            <Link href={`/work/${featured.slug}`} className="feature-card">
+              <div className="feature-copy">
+                <p className="tag">{featured.tag}</p>
+                <h3>{featured.title}</h3>
+                <p>{featured.dek}</p>
+                <div className="feature-stat">
+                  <span className="num font-mono">{featured.stat.value}</span>
+                  <span className="label">{featured.stat.label}</span>
+                </div>
+                <span className="view-link">View case study →</span>
+              </div>
+              <div className="feature-visual" aria-hidden="true">
+                <div className="agent-core">
+                  <span>Orchestrator</span>
+                  <small>intent → routing → evidence</small>
+                </div>
+                <div className="agent-grid">
+                  {AGENTS.map((a) => (
+                    <div key={a}>{a}</div>
+                  ))}
+                </div>
+              </div>
+            </Link>
+
             <div className="work-list">
-              {CASE_STUDIES.map((c) => (
+              {rest.map((c) => (
                 <Link key={c.slug} href={`/work/${c.slug}`} className="work-card">
                   <div className="work-card-top">
                     <div>
@@ -98,8 +132,10 @@ export default function Home() {
           </Reveal>
 
           <Reveal className="py-20">
-            <p className="section-label">How I think about products</p>
-            <h2 className="section-heading">Four principles, not a philosophy</h2>
+            <p className="section-label">
+              <span className="mark" aria-hidden="true">✳</span>How I think about products
+            </p>
+            <h2 className="section-heading">Principles, not a playbook.</h2>
             <div className="mt-6">
               {PRINCIPLES.map((p) => (
                 <div className="principle" key={p.title}>
@@ -112,7 +148,9 @@ export default function Home() {
           </Reveal>
 
           <Reveal className="py-20">
-            <p className="section-label">Experiments</p>
+            <p className="section-label">
+              <span className="mark" aria-hidden="true">✳</span>Experiments
+            </p>
             <h2 className="section-heading">Things I built because I needed them</h2>
             <div className="work-list">
               <div className="work-card" style={{ cursor: "default" }}>
@@ -130,16 +168,38 @@ export default function Home() {
                   A forkable toolkit of Claude Code skills, a team-context memory library, and built-in
                   expert-reviewer agents &mdash; started as a fix for my own team&rsquo;s PRD and spec review
                   cycle, now forked by other PayPal PM teams. First drafts went from 30+ minutes of editing
-                  to ready-to-use, with an engineer/exec/skeptic review in about 60 seconds versus a
-                  roughly two-week cross-functional cycle.
+                  to ready-to-use, with an engineer/exec/skeptic review in about 60 seconds versus a roughly
+                  two-week cross-functional cycle.
                 </p>
               </div>
-              {/* TODO: add your AI side project here once you share the name/link/what it does */}
+
+              <div className="work-card" style={{ cursor: "default" }}>
+                <div className="work-card-top">
+                  <div>
+                    <p className="tag">Personal AI project · Concept</p>
+                    <h3>Between</h3>
+                  </div>
+                </div>
+                <p>
+                  A private reflection agent for processing recurring conflict patterns &mdash; built to
+                  help one partner notice what keeps happening before a disagreement turns into the same
+                  old argument. Safety screening runs before anything resembling coaching, partner
+                  participation is optional and consent-driven, and sensitive cases route to real support
+                  resources rather than the agent&rsquo;s own advice. A concept and prototype, not a
+                  clinical tool or a replacement for licensed care.
+                </p>
+                {/* TODO: this description is adapted from the brief you shared for this project —
+                    please confirm the specifics (safety screening, consent flow, routing behavior) are
+                    accurate before this goes live, and let me know if you'd like a link or a stronger
+                    disclaimer line. */}
+              </div>
             </div>
           </Reveal>
 
           <Reveal className="py-20" id="writing">
-            <p className="section-label">Writing</p>
+            <p className="section-label">
+              <span className="mark" aria-hidden="true">✳</span>Writing
+            </p>
             <h2 className="section-heading">Signals, Systems and Soul</h2>
             {/* TODO: swap in 2-4 specific post titles + links once you pick which ones to feature */}
             <p className="mt-4 text-muted">
@@ -152,7 +212,9 @@ export default function Home() {
           </Reveal>
 
           <Reveal className="py-20">
-            <p className="section-label">About</p>
+            <p className="section-label">
+              <span className="mark" aria-hidden="true">✳</span>About
+            </p>
             <h2 className="section-heading">Where this came from</h2>
             {/* TODO: this is a first draft — pass it for voice/accuracy before it's final */}
             <p className="mt-4 max-w-2xl leading-7 text-muted">
